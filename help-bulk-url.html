@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulk URL Import — Format Guide</title>
+  <style>
+    :root { --primary: #E8621A; --green: #2D6A4F; --cream: #FDF6EC; --text: #1C1C1C; --muted: #6B6B6B; --bg: #F5F5F5; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--cream); color: var(--text); padding: 20px 16px 48px; line-height: 1.6; }
+    h1 { font-family: Georgia, serif; font-size: 24px; color: var(--primary); margin-bottom: 4px; }
+    .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+    h2 { font-family: Georgia, serif; font-size: 18px; color: var(--green); margin: 24px 0 10px; }
+    p { font-size: 14px; margin-bottom: 10px; }
+    pre { background: var(--bg); border-left: 3px solid var(--primary); padding: 12px; border-radius: 6px; font-size: 13px; white-space: pre-wrap; margin: 8px 0 16px; overflow-x: auto; }
+    .tag { display: inline-block; background: var(--primary); color: #fff; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 10px; margin-right: 4px; vertical-align: middle; }
+    .note { background: #FFF3E0; border: 1px solid #FFB74D; border-radius: 6px; padding: 10px 12px; font-size: 13px; margin: 8px 0 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0 16px; }
+    th { background: var(--green); color: #fff; padding: 7px 10px; text-align: left; }
+    td { border-bottom: 1px solid #ddd; padding: 7px 10px; }
+    tr:nth-child(even) td { background: #f9f9f9; }
+  </style>
+</head>
+<body>
+
+<h1>Bulk URL Import</h1>
+<p class="subtitle">Import multiple recipe links at once from a plain text file.</p>
+
+<h2>Simple Format — One URL per Line</h2>
+<p>The simplest format: paste one recipe URL per line into a <code>.txt</code> or <code>.csv</code> file.</p>
+<pre>https://www.allrecipes.com/recipe/spaghetti-bolognese
+https://www.bbcgoodfood.com/recipes/chocolate-cake
+https://www.taste.com.au/recipes/beef-stroganoff</pre>
+
+<h2>Advanced Format — With Category &amp; Collection</h2>
+<p>Add a header row to assign a <strong>Category</strong> and/or <strong>Collection</strong> to each recipe. Columns can be in any order — they are matched by name.</p>
+
+<table>
+  <tr><th>Column</th><th>Description</th><th>Example</th></tr>
+  <tr><td><strong>URL</strong></td><td>Required. The recipe link.</td><td>https://example.com/recipe</td></tr>
+  <tr><td><strong>Category</strong></td><td>Optional. Recipe category.</td><td>Dinner</td></tr>
+  <tr><td><strong>Collection</strong></td><td>Optional. Adds the recipe to a named collection (created if it doesn't exist).</td><td>Family Favourites</td></tr>
+</table>
+
+<pre>URL,Category,Collection
+https://www.allrecipes.com/recipe/spaghetti,Dinner,Italian Nights
+https://www.bbcgoodfood.com/recipes/chocolate-cake,Dessert,Baking
+https://www.taste.com.au/recipes/beef-stroganoff,Dinner,
+https://www.example.com/soup,,Quick Meals</pre>
+
+<div class="note">💡 <strong>Tip:</strong> Leave Category or Collection blank for a row and those fields will be skipped. Columns can be in any order as long as the header names match.</div>
+
+<h2>Supported File Types</h2>
+<p><span class="tag">TXT</span> One URL per line (simple format only)</p>
+<p><span class="tag">CSV</span> Comma-separated values, with or without header row</p>
+
+<h2>Tips</h2>
+<ul style="padding-left:18px;font-size:14px;">
+  <li style="margin-bottom:6px;">Recipes are imported one at a time — the screen shows progress as each URL is processed.</li>
+  <li style="margin-bottom:6px;">Failed rows are shown with an error and can be retried individually.</li>
+  <li style="margin-bottom:6px;">Duplicate URLs that are already in your library will be skipped.</li>
+  <li style="margin-bottom:6px;">Social media URLs (Facebook, Instagram, TikTok) work just like entering them manually.</li>
+</ul>
+
+</body>
+</html>

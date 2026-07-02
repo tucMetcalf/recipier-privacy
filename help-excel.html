@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel / CSV Import — Format Guide</title>
+  <style>
+    :root { --primary: #E8621A; --green: #2D6A4F; --cream: #FDF6EC; --text: #1C1C1C; --muted: #6B6B6B; --bg: #F5F5F5; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--cream); color: var(--text); padding: 20px 16px 48px; line-height: 1.6; }
+    h1 { font-family: Georgia, serif; font-size: 24px; color: var(--primary); margin-bottom: 4px; }
+    .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+    h2 { font-family: Georgia, serif; font-size: 18px; color: var(--green); margin: 24px 0 10px; }
+    h3 { font-size: 15px; color: var(--text); margin: 16px 0 6px; font-weight: 600; }
+    p { font-size: 14px; margin-bottom: 10px; }
+    pre { background: var(--bg); border-left: 3px solid var(--primary); padding: 12px; border-radius: 6px; font-size: 12px; white-space: pre-wrap; margin: 8px 0 16px; overflow-x: auto; }
+    .col { display: inline-block; background: var(--green); color: #fff; font-size: 12px; font-weight: 700; padding: 2px 7px; border-radius: 4px; margin-right: 4px; }
+    .tag { display: inline-block; background: var(--primary); color: #fff; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 10px; margin-right: 4px; }
+    .note { background: #FFF3E0; border: 1px solid #FFB74D; border-radius: 6px; padding: 10px 12px; font-size: 13px; margin: 8px 0 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0 16px; }
+    th { background: var(--green); color: #fff; padding: 7px 10px; text-align: left; }
+    td { border-bottom: 1px solid #ddd; padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) td { background: #f9f9f9; }
+  </style>
+</head>
+<body>
+
+<h1>Excel / CSV Import</h1>
+<p class="subtitle">Import a full recipe library from a spreadsheet.</p>
+
+<h2>Column Layout</h2>
+<p>Each row is one recipe. Columns must be in this order:</p>
+
+<table>
+  <tr><th>Column</th><th>Header</th><th>Description</th></tr>
+  <tr><td><span class="col">A</span></td><td>Category</td><td>Recipe category (e.g. Breakfast, Dinner). Can be blank.</td></tr>
+  <tr><td><span class="col">B</span></td><td>Title</td><td>Recipe name. <strong>Required.</strong></td></tr>
+  <tr><td><span class="col">C</span></td><td>Ingredients</td><td>Ingredient list — one ingredient per line within the cell. Include amount and unit if known.</td></tr>
+  <tr><td><span class="col">D</span></td><td>Directions</td><td>Step-by-step instructions — one step per line within the cell.</td></tr>
+  <tr><td><span class="col">E</span></td><td>Collection</td><td>Optional. Assigns the recipe to a named collection (created if it doesn't exist). Overrides the sheet-name default.</td></tr>
+</table>
+
+<h3>Example Row</h3>
+<pre>Category  | Title            | Ingredients                          | Directions                      | Collection
+Dessert   | Lemon Drizzle    | 200g butter                          | 1. Preheat oven to 180°C        | Baking
+          |                  | 200g caster sugar                    | 2. Cream butter and sugar       |
+          |                  | 3 eggs                               | 3. Add eggs one at a time       |
+          |                  | 200g self-raising flour              | 4. Fold in flour                |
+          |                  | Zest of 2 lemons                     | 5. Pour into tin and bake 45min |</pre>
+
+<h2>Sheet Names &amp; Collections</h2>
+<p>Each sheet tab in an Excel file is treated as a separate collection by default. The sheet name becomes the collection name.</p>
+<ul style="padding-left:18px;font-size:14px;margin-bottom:12px;">
+  <li style="margin-bottom:6px;"><strong>Sheet "Breakfast"</strong> → all recipes go into a "Breakfast" collection</li>
+  <li style="margin-bottom:6px;"><strong>Sheet "Dinner"</strong> → all recipes go into a "Dinner" collection</li>
+  <li style="margin-bottom:6px;">Use column <span class="col">E</span> (Collection) to override this per row</li>
+</ul>
+<div class="note">💡 <strong>Tip:</strong> CSV files have only one sheet. Use column E to assign recipes to different collections within a single CSV.</div>
+
+<h2>Side-by-Side Ingredient Sections</h2>
+<p>Some recipes (e.g. pastry + filling) have two ingredient lists that sit side-by-side in the spreadsheet. Recipi'er detects this automatically.</p>
+<p>Put both section headers on the same row — one in the left half of column C, one in the right half — and list ingredients below each:</p>
+<pre>PASTRY                      FILLING
+150g margarine              675g pie apples, grated
+250g plain flour             25g sugar
+25g ground almonds           2 tbsp raisins
+75g caster sugar             2 tbsp cream</pre>
+<p>Both sections will be imported as separate ingredient groups.</p>
+
+<h2>Supported File Types</h2>
+<p><span class="tag">XLSX</span> Excel (recommended)</p>
+<p><span class="tag">XLS</span> Older Excel format</p>
+<p><span class="tag">CSV</span> Comma-separated values</p>
+<p><span class="tag">GSHEET</span> Google Sheets (share as "Anyone with the link can view" and paste the sheet URL)</p>
+
+<h2>Tips</h2>
+<ul style="padding-left:18px;font-size:14px;">
+  <li style="margin-bottom:6px;">Each row with a Title is imported as a separate recipe — even if Category and other fields are blank.</li>
+  <li style="margin-bottom:6px;">Blank rows between recipes are ignored.</li>
+  <li style="margin-bottom:6px;">For multi-line cells in Excel, use <strong>Alt+Enter</strong> (Windows) or <strong>Option+Return</strong> (Mac) to add a line break within a cell.</li>
+  <li style="margin-bottom:6px;">Duplicate recipes (matching an existing title in the same collection) are skipped.</li>
+</ul>
+
+</body>
+</html>
