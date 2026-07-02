@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Recipi'er</title>
+  <style>
+    :root {
+      --primary: #E8621A;
+      --green:   #2D6A4F;
+      --cream:   #FDF6EC;
+      --text:    #1C1C1C;
+      --muted:   #6B6B6B;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      padding: 24px 20px 48px;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      padding: 32px 0 24px;
+    }
+    header .logo {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+    header h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 32px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    header .tagline {
+      color: var(--muted);
+      font-size: 16px;
+      margin-top: 6px;
+    }
+    .divider {
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--primary), transparent);
+      margin: 24px 0;
+      opacity: 0.3;
+    }
+    section {
+      margin-bottom: 28px;
+    }
+    section h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 20px;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    section p {
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    .feature-list li .icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 12px;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🍽️</div>
+    <h1>Recipi'er</h1>
+    <p class="tagline">Your personal AI-powered recipe manager</p>
+  </header>
+
+  <div class="divider"></div>
+
+  <section>
+    <h2>What is Recipi'er?</h2>
+    <p>
+      Recipi'er is a personal recipe manager that uses AI to help you capture, organise, and cook
+      the recipes you love — wherever you find them. Import from Facebook, Instagram, YouTube,
+      TikTok, Pinterest, recipe websites, photos, or plain text. Recipi'er does the hard work of
+      extracting ingredients and steps so you can focus on cooking.
+    </p>
+  </section>
+
+  <section>
+    <h2>Key Features</h2>
+    <ul class="feature-list">
+      <li><span class="icon">🤖</span><span>AI-powered import from social media, websites, photos, and text — powered by Claude AI</span></li>
+      <li><span class="icon">📱</span><span>Share any recipe link directly to Recipi'er from any app</span></li>
+      <li><span class="icon">📚</span><span>Organise recipes into collections and share collections with family and friends</span></li>
+      <li><span class="icon">🔍</span><span>Search by title, ingredient, category, and dietary preference</span></li>
+      <li><span class="icon">🌐</span><span>Discover and save public recipes from other Recipi'er users</span></li>
+      <li><span class="icon">🍳</span><span>Full-screen cooking mode with step-by-step navigation and timers</span></li>
+      <li><span class="icon">🛒</span><span>Generate shopping lists from your meal plan automatically</span></li>
+      <li><span class="icon">📅</span><span>Plan your weekly meals with the built-in meal planner</span></li>
+      <li><span class="icon">⚖️</span><span>Scale recipes up or down and toggle between metric and imperial units</span></li>
+      <li><span class="icon">💾</span><span>Works offline — your recipes are always available even without internet</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Built with</h2>
+    <ul class="feature-list">
+      <li><span class="icon">⚡</span><span>Flutter — fast, beautiful, cross-platform</span></li>
+      <li><span class="icon">🗄️</span><span>Supabase — secure, real-time cloud sync</span></li>
+      <li><span class="icon">🧠</span><span>Anthropic Claude — the AI behind recipe extraction</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Contact &amp; Support</h2>
+    <p>Have feedback, a bug report, or just want to say hello? Use the <strong>Contact Support</strong> option in Feedback &amp; Support — we read every message.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <footer>
+    <p>Made with ❤️ and a lot of good food.</p>
+    <p style="margin-top:8px;">
+      &copy; 2026 TUCSoft &nbsp;·&nbsp;
+      <a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="terms.html">Terms of Use</a>
+    </p>
+  </footer>
+
+</body>
+</html>
