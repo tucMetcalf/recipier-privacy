@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Import Observations — Format Guide</title>
+  <style>
+    :root { --primary: #1B5E20; --accent: #6B8E23; --cream: #F3EFE6; --text: #1C1F1C; --muted: #5B6B5B; --bg: #EDEAE0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--cream); color: var(--text); padding: 20px 16px 48px; line-height: 1.6; }
+    h1 { font-family: Georgia, serif; font-size: 24px; color: var(--primary); margin-bottom: 4px; }
+    .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+    h2 { font-family: Georgia, serif; font-size: 18px; color: var(--primary); margin: 24px 0 10px; }
+    h3 { font-size: 15px; color: var(--text); margin: 16px 0 6px; font-weight: 600; }
+    p { font-size: 14px; margin-bottom: 10px; }
+    pre { background: var(--bg); border-left: 3px solid var(--accent); padding: 12px; border-radius: 6px; font-size: 12px; white-space: pre-wrap; margin: 8px 0 16px; overflow-x: auto; }
+    code { background: var(--bg); padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+    .col { display: inline-block; background: var(--primary); color: #fff; font-size: 12px; font-weight: 700; padding: 2px 7px; border-radius: 4px; margin-right: 4px; }
+    .tag { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 10px; margin-right: 4px; margin-bottom: 4px; }
+    .note { background: #FFF3E0; border: 1px solid #FFB74D; border-radius: 6px; padding: 10px 12px; font-size: 13px; margin: 8px 0 16px; }
+    .required { background: #FDECEA; border: 1px solid #E57373; border-radius: 6px; padding: 10px 12px; font-size: 13px; margin: 8px 0 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0 16px; }
+    th { background: var(--primary); color: #fff; padding: 7px 10px; text-align: left; }
+    td { border-bottom: 1px solid #ddd; padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) td { background: #f9f9f9; }
+    ul { padding-left: 18px; font-size: 14px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+<h1>Import Observations</h1>
+<p class="subtitle">Bring an eBird export or any other spreadsheet of sightings into Tripper.</p>
+
+<h2>Getting an eBird Export</h2>
+<p>From <a href="https://ebird.org/downloadMyData">ebird.org/downloadMyData</a>, request "My eBird Data" — eBird emails you a link to a file usually named <code>MyEBirdData.csv</code>. That file works directly with Tripper's import — no editing required.</p>
+
+<h2>Required Columns</h2>
+<div class="required">Every row needs a <strong>date</strong> and a way to identify the <strong>species</strong> (either a species code, or a common/scientific name matched against your downloaded species catalog).</div>
+
+<table>
+  <tr><th>Field</th><th>Recognized headers</th><th>Notes</th></tr>
+  <tr><td>Date</td><td><code>observation_date</code>, <code>observed_at</code>, <code>date</code></td><td><strong>Required.</strong> Accepts <code>YYYY-MM-DD</code>, <code>DD/MM/YYYY</code>, and eBird's own <code>M/D/YYYY</code> format.</td></tr>
+  <tr><td>Species code</td><td><code>specie_code</code>, <code>species_code</code>, <code>code</code></td><td>Matched against your local species catalog (from a downloaded data pack).</td></tr>
+  <tr><td>Common name</td><td><code>common_name</code>, <code>species</code></td><td>eBird's <code>Common Name</code> column matches this automatically.</td></tr>
+  <tr><td>Scientific name</td><td><code>scientific_name</code></td><td>Used if no code or common name matches.</td></tr>
+  <tr><td>Count</td><td><code>count</code>, <code>total</code></td><td>Number of individuals. Defaults to 1 if not present.</td></tr>
+  <tr><td>Site / hotspot</td><td><code>hotspot_name</code>, <code>site_name</code>, <code>locality</code>, <code>location</code></td><td>eBird's <code>Location</code> column matches this automatically.</td></tr>
+  <tr><td>State / province</td><td><code>state_name</code>, <code>state</code>, <code>state_province</code></td><td>eBird's <code>State/Province</code> column matches this automatically.</td></tr>
+  <tr><td>Country</td><td><code>country_code</code>, <code>country</code></td><td>ISO country code preferred where available.</td></tr>
+  <tr><td>Latitude / Longitude</td><td><code>latitude</code>/<code>lat</code>, <code>longitude</code>/<code>lon</code>/<code>lng</code></td><td>Used if the site name doesn't already resolve to a known location.</td></tr>
+  <tr><td>Trip</td><td><code>trip_id</code></td><td>Optional — links the observation to an existing Tripper trip.</td></tr>
+</table>
+
+<h2>Column Mapping</h2>
+<p>Headers are matched automatically, case- and punctuation-insensitive — <code>Common Name</code>, <code>common_name</code>, and <code>COMMON-NAME</code> all resolve the same way. If your file uses different column names (e.g. <code>Bird</code> instead of <code>Species</code>), Tripper's import screen shows a <strong>column mapping</strong> section after you pick a file — one dropdown per recognized field, pre-filled wherever auto-detection already found a match. Pick the right column for anything left unmapped, or leave it as <em>Auto-detect</em>/<em>Not mapped</em> if the field doesn't apply.</p>
+
+<h2>Supported File Types</h2>
+<p><span class="tag">CSV</span> Comma-separated values — the only format currently supported. Export Excel/Sheets files as CSV first.</p>
+
+<h2>What Happens During Import</h2>
+<ul>
+  <li>Rows are processed oldest-first by observation date.</li>
+  <li>Exact duplicates (same species, date, and location, for the same trip) are skipped automatically — safe to re-run an import if it's interrupted partway through.</li>
+  <li>Large files are imported in batches rather than as one all-or-nothing operation, so an interrupted import keeps whatever was already saved.</li>
+  <li>"Lifer" status (first-ever sighting of a species at each location scope) is recalculated once, after all rows are imported.</li>
+  <li>Imported observations sync to your account the same as any other observation.</li>
+</ul>
+
+<div class="note">💡 <strong>Tip:</strong> Rows with an unrecognized species or an unparseable date are skipped and listed as errors after the import finishes — everything else still imports normally.</div>
+
+</body>
+</html>
