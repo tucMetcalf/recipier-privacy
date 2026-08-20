@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support – EasyNZB</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background: #F7F8FA;
+      color: #1A1A1A;
+      line-height: 1.8;
+      padding: 0 1rem;
+    }
+
+    header {
+      background: #1C4E80;
+      color: #fff;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 2.5rem auto 4rem;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      color: #1C4E80;
+      margin: 2rem 0 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: #333;
+    }
+
+    .contact-box {
+      background: #1C4E80;
+      color: #fff;
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin: 1.5rem 0 2.5rem;
+      text-align: center;
+    }
+
+    .contact-box p {
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-box a {
+      color: #A9CCE8;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .contact-box a:hover {
+      text-decoration: underline;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #E0E4E9;
+      padding: 1.25rem 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1A1A1A;
+      margin-bottom: 0.4rem;
+    }
+
+    .faq-answer {
+      font-size: 0.97rem;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #aaa;
+      padding: 2rem 0;
+      border-top: 1px solid #E0E4E9;
+      margin-top: 3rem;
+    }
+
+    a { color: #1C4E80; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>EasyNZB</h1>
+  <p>Support</p>
+</header>
+
+<main>
+
+  <p>Need help with EasyNZB? We're here for you. Browse the frequently asked questions below or get in touch directly.</p>
+
+  <h2>Contact Us</h2>
+  <div class="contact-box">
+    <p>Have a question or issue? Send us an email and we'll get back to you as soon as possible.</p>
+    <a href="mailto:tucmetcalf@gmail.com">tucmetcalf@gmail.com</a>
+  </div>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">Do I need a Usenet provider account?</div>
+    <div class="faq-answer">Yes. EasyNZB is a Usenet (NNTP) download client — it doesn't provide access to Usenet itself. You'll need an account with your own Usenet provider, which gives you a server hostname, port, and login credentials to enter into EasyNZB.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How do I add a Usenet server?</div>
+    <div class="faq-answer">Open Preferences and add a server with its host, port, SSL setting, and your username/password. Use "Test Connection" to confirm it works before saving. You can add more than one server and set a priority — lower-priority servers are tried first, with higher-priority ones used as fallback (e.g. a backup provider).</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How do I start a download?</div>
+    <div class="faq-answer">Drag and drop an .nzb file onto the EasyNZB window, or use the "Add NZB…" button to pick one from a file picker. EasyNZB queues it and begins downloading from your configured server(s).</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What do "Verify &amp; repair with par2" and "Extract archives automatically" do?</div>
+    <div class="faq-answer">These optional Preferences toggles use the command-line tools <code>par2</code> and <code>unar</code> to repair incomplete downloads and unpack archives automatically once a download finishes. They aren't bundled with EasyNZB — install them first with <code>brew install par2 unar</code> in Terminal.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Where are my downloads saved?</div>
+    <div class="faq-answer">Wherever you set as the destination folder in Preferences &gt; Downloads. Click "Choose…" to pick a different folder at any time.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Can I limit download speed or the number of simultaneous downloads?</div>
+    <div class="faq-answer">Yes — in Preferences &gt; Throughput, use the Max Speed slider (or leave it at 0 for unlimited) and the "Simultaneous downloads" stepper to control how many jobs run at once.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Can I pause downloads temporarily?</div>
+    <div class="faq-answer">Yes — the global "Pause For…" control lets you pause all downloads for a preset duration, from 15 minutes up to 4 hours, which is handy around bandwidth caps or scheduled maintenance windows.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Why does EasyNZB ask for permission to access a folder?</div>
+    <div class="faq-answer">EasyNZB runs inside Apple's App Sandbox, so it can only write to a folder you've explicitly granted it access to. Once you choose a destination folder, EasyNZB remembers it (via a security-scoped bookmark) so you won't be asked again for that same location.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Does EasyNZB send any of my data anywhere?</div>
+    <div class="faq-answer">No. EasyNZB has no account, no server of its own, and makes no network requests other than the connections to the Usenet server(s) you configure. Your server credentials stay in the macOS Keychain. See our <a href="easynzb-privacy-policy.html">Privacy Policy</a> for full details.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">The app isn't working as expected — what should I do?</div>
+    <div class="faq-answer">Try closing and reopening the app first, and double-check your server settings with "Test Connection" in Preferences. If the issue persists, email us at <a href="mailto:tucmetcalf@gmail.com">tucmetcalf@gmail.com</a> with a description of the problem and we'll look into it right away.</div>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 Tuc Metcalf. All rights reserved.
+</footer>
+
+</body>
+</html>
